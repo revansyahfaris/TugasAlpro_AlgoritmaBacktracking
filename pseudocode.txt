@@ -1,0 +1,18 @@
+PROCEDURE SolveSudoku(board)
+    IF board is full THEN
+        RETURN True (Success) [cite: 54]
+    
+    cell = FindNextEmptyCell(board)
+    row, col = cell
+
+    FOR num FROM 1 TO 9 DO [cite: 53]
+        IF IsValid(board, num, row, col) THEN [cite: 60]
+            board[row][col] = num
+            
+            IF SolveSudoku(board) == True THEN [cite: 61]
+                RETURN True
+            
+            board[row][col] = 0 (BACKTRACK) [cite: 63]
+            
+    RETURN False (No solution for this branch) [cite: 64]
+END PROCEDURE
